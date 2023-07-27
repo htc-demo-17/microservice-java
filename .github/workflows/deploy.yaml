@@ -33,7 +33,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - run: npm install
+      - run: mvn package 
       - run: docker build --platform linux/amd64 . -t $AWS_ECR/$IMAGE:$TAG
       - run: docker push $AWS_ECR/$IMAGE:$TAG
 
